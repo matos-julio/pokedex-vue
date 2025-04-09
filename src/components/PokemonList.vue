@@ -1,0 +1,1 @@
+<!-- Aqui cria a lista com todos os cards de pokemon pra exibir na tela inicial -->

@@ -1,8 +1,12 @@
 <script>
 import { ref, onMounted } from 'vue';
 import { fetchPokemon, fetchPokemonDetails } from './services/api';
+import PokemonCard from './components/pokemonCard.vue';
 
 export default {
+  components: {
+    PokemonCard
+  },
   setup() {
     const pokemons = ref([]); // cria array vazia pra puxar os pokemon na api
 
@@ -16,7 +20,7 @@ export default {
       pokemons.value = pokemonDetails
     })
 
-    return {pokemons}
+    return { pokemons }
   }
 }
 
@@ -26,9 +30,11 @@ export default {
   <h1>Pokedex</h1>
 
   <ul>
-    <li v-for="pokemon in pokemons" :key="pokemon.id"><p>{{ pokemon.name }}</p></li>
+    <li v-for="pokemon in pokemons" :key="pokemon.id">
+      <!--cria cada pokemon que vier na resposta do card | :pokemon = prop que o card recebe | "pokemon" resultado do loop -->
+      <PokemonCard :pokemon="pokemon"></PokemonCard> 
+    </li>
   </ul>
-
 </template>
 
 <style scoped></style>

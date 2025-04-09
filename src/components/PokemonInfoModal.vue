@@ -1,0 +1,1 @@
+<!-- modal com informacoes detalhadas de cada pokemon -->
