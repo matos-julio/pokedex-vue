@@ -1,3 +1,8 @@
+<template>
+  <h1>Pokedex</h1>
+  <PokemonList />
+</template>
+
 <script>
 import PokemonList from './components/PokemonList.vue';
 
@@ -9,10 +14,5 @@ export default {
 }
 
 </script>
-
-<template>
-  <h1>Pokedex</h1>
-  <PokemonList />
-</template>
 
 <style scoped></style>

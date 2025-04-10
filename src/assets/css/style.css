@@ -1,5 +1,7 @@
 /* ESTILOS GLOBAIS DO SITE */
-
+body{
+  background: #fbf7f5;
+}
 ul li {
   list-style: none;
 }
