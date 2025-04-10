@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import { fetchPokemon, fetchPokemonDetails } from './api';
 
-export function usePokemons(limit = 6) {
+export function usePokemons(limit = 9) {
   const pokemons = ref([]); // cria array vazia pra puxar os pokemon na api
 
   const loadPokemons = async() => {

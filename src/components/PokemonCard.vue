@@ -1,28 +1,90 @@
 <!-- aqui vao entrar os detalhes pra criacao de cada card individualmente -->
-<!-- Nome, ID, IMG, Tipo? Especie? -->
+<!-- Nome, ID, IMG, Tipo, Especie -->
 
 <script>
 export default {
   name: "PokemonCard",
   props: {
-    pokemon: Object // recebe o valor da array Pokemons, dentro do app.vue
+    pokemon: Object // recebe o valor da array Pokemons, dentro do PokemonList
   }
 }
 </script>
 
 <template>
+  <div class="pokemon-card d-flex justify-content-between align-items-center p-3 mb-3 rounded shadow">
+    <div class="card-info">
+      <h2 class="pokemon-name">{{ pokemon.name }}</h2>
+      <h5 class="pokemon-id">#{{ pokemon.id }}</h5>
 
-  <div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img :src="pokemon.sprites.front_default" class="img-fluid rounded-start" :alt="pokemon.name">
+      <!-- tipo / especie -->
+      <div class="badges mt-2">
+        <span class="badge type-badge">{{ pokemon.types[0].type.name }}</span>
+        <span class="badge species-badge">{{ pokemon.species.name }}</span>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"> {{ pokemon.name }} </h5>
-          <p class="card-text"><small class="text-body-secondary"> {{ pokemon.id }} </small></p>
-        </div>
-      </div>
+    </div>
+
+    <div class="card-image">
+      <img :src="pokemon.sprites.other['official-artwork'].front_default" :alt="pokemon.name" />
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Ajuste de estilos customizados */
+
+.pokemon-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  display: flex;
+  gap: 20px;
+  max-width: 600px;
+  min-height: 180px;
+}
+
+.card-info {
+  flex-grow: 1;
+}
+
+.pokemon-name {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.pokemon-id {
+  margin: 0;
+  font-size: 1rem;
+  color: #777;
+}
+
+.badges {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.type-badge {
+  background-color: #4caf50; /* verde como placeholder */
+}
+
+.species-badge {
+  background-color: #2196f3; /* azul como placeholder */
+}
+
+.card-image img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+</style>
+
