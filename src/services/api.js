@@ -1,3 +1,4 @@
+// arquivo pra fazer o fetch direto da API
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
 // funcao pra puxar todos os pokemon da api
