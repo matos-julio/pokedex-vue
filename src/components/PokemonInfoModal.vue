@@ -23,7 +23,7 @@ export default {
   },
   // define os eventos que devem ser enviados ao pai
   emits: ["close"],
-  setup(props, { emit }){
+  setup(_, { emit }){ // _ porque nao tem uso de props
     // fecha o modal ao clicar fora da tela
     const fecharModal = () => {
       emit("close")
