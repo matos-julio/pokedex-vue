@@ -3,7 +3,6 @@
   <div class="container">
     <PokemonSearchBar @search="handleSearch" />
     
-
     <!-- Exibe a mensagem de erro caso não haja resultados -->
     <div v-if="noResults" class="alert alert-warning" role="alert">
       Nenhum Pokémon encontrado. Tente um nome ou ID válido.
@@ -30,6 +29,7 @@ import { usePokemons } from '../services/usePokemons'; // api formatada, ja com 
 import PokemonCard from './PokemonCard.vue';
 import PokemonInfoModal from './PokemonInfoModal.vue';
 import PokemonSearchBar from './PokemonSearchBar.vue';
+import { filtrarPokemons } from '@/utils/pokemonFilters';
 
 export default {
   name: "PokemonList", // pra ser chamado no app.vue
@@ -40,51 +40,23 @@ export default {
   },
   setup() {
     const { pokemons, totalPokemons } = usePokemons(51) // numero de pokemos que aparecem na tela
-    console.log("total: ", totalPokemons.value)
 
-    const pokemonSelecionado = ref(null) // verifica o pokemon clicado pra abrir o modal, comeca por padrao com null
-    // verifica qual o pokemon(card) foi clicado pra abrir o modal correspondente
+    const pokemonSelecionado = ref(null) // verifica o pokemon clicado pra abrir o modal
     const handleCardClick = (pokemon) => {
       pokemonSelecionado.value = pokemon
     }
 
     // Filtros barra de pesquisa
-    const searchTerm = ref('') // valor recebido na barra de pesquisa
-    const noResults = ref(false) // verifica se nao tem resultados
+    const searchInput = ref('') // valor recebido na barra de pesquisa
+    const noResults = ref(false);
 
     const pokemonsFiltrados = computed(() => {
-      const termo = searchTerm.value.trim().toLowerCase();
-
-      if (!termo) {
-        noResults.value = false;
-        return pokemons.value;
-      }
-
-      const isNumber = !isNaN(Number(termo));
-
-      const filtrados = pokemons.value.filter(pokemon => {
-        // Verifica por ID
-        if (isNumber && pokemon.id === Number(termo)) return true;
-
-        // Verifica por nome
-        if (pokemon.name.toLowerCase().includes(termo)) return true;
-
-        // Verifica por tipo
-        const tipos = pokemon.types.map(t => t.type.name.toLowerCase());
-        if (tipos.includes(termo)) return true;
-
-        // Verifica por espécie
-        if (pokemon.speciesData?.name?.toLowerCase().includes(termo)) return true;
-        return false;
-      });
-
-      noResults.value = filtrados.length === 0;
-      return filtrados;
-    });
+      return filtrarPokemons(pokemons.value, searchInput.value, noResults);
+    })
 
 
-    const handleSearch = (term) => {
-      searchTerm.value = term
+    const handleSearch = (input) => {
+      searchInput.value = input
     }
 
 
