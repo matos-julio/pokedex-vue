@@ -2,8 +2,10 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
 // funcao pra puxar todos os pokemon da api
-export async function fetchPokemon(limit= 6) { //define quantos pokemon a api vai puxar | 6 = padrao
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`)
+// limit = pokemons por pagina
+// offset = comeco da busca na lista
+export async function fetchPokemon(limit= 6, offset = 0) { //define quantos pokemon a api vai puxar | 6 = padrao
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
   const data = await response.json()  
   return data // objeto contendo cada pokemon {name, url}
 }

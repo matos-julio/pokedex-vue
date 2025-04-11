@@ -1,8 +1,12 @@
 <!-- Aqui cria a lista/grid com todos os cards de pokemon pra exibir na tela inicial -->
 <template>
   <div class="container">
-    <PokemonSearchBar @search="handleSearch" />
-    
+    <div class="sticky-top py-2 z-index-fixed">
+      <PokemonSearchBar @search="handleSearch" />
+    </div>
+
+    <!-- <PokemonSearchBar @search="handleSearch" /> -->
+
     <!-- Exibe a mensagem de erro caso não haja resultados -->
     <div v-if="noResults" class="alert alert-warning" role="alert">
       Nenhum Pokémon encontrado. Tente um nome ou ID válido.
@@ -16,6 +20,13 @@
         <PokemonCard :pokemon="pokemon" @cardClick="handleCardClick(pokemon)" />
       </div>
     </div>
+
+    <!-- tela de loading pra otimizar o carregamento da pagina -->
+    <div v-if="isLoading" class="text-center my-3">
+      <span>Carregando mais Pokémon...</span>
+    </div>
+
+
   </div>
 
   <!-- Modal -->
@@ -24,12 +35,13 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { usePokemons } from '../services/usePokemons'; // api formatada, ja com os pokemons
 import PokemonCard from './PokemonCard.vue';
 import PokemonInfoModal from './PokemonInfoModal.vue';
 import PokemonSearchBar from './PokemonSearchBar.vue';
 import { filtrarPokemons } from '@/utils/pokemonFilters';
+import { throttleScroll } from '@/utils/throttleScroll';
 
 export default {
   name: "PokemonList", // pra ser chamado no app.vue
@@ -39,7 +51,7 @@ export default {
     PokemonSearchBar
   },
   setup() {
-    const { pokemons, totalPokemons } = usePokemons(51) // numero de pokemos que aparecem na tela
+    const { pokemons, totalPokemons, loadPokemons } = usePokemons(9) // numero de pokemos que aparecem na tela
 
     const pokemonSelecionado = ref(null) // verifica o pokemon clicado pra abrir o modal
     const handleCardClick = (pokemon) => {
@@ -47,17 +59,36 @@ export default {
     }
 
     // Filtros barra de pesquisa
-    const searchInput = ref('') // valor recebido na barra de pesquisa
+    const searchInput = ref(''); // valor recebido na barra de pesquisa
     const noResults = ref(false);
 
     const pokemonsFiltrados = computed(() => {
       return filtrarPokemons(pokemons.value, searchInput.value, noResults);
     })
 
-
     const handleSearch = (input) => {
       searchInput.value = input
-    }
+    };
+
+    // scroll infinito
+    const isLoading = ref(false);
+
+    const handleScroll = async () => {
+      const scrollBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 400;
+
+      if (scrollBottom && !isLoading.value) {
+        isLoading.value = true;
+        await loadPokemons();
+        isLoading.value = false;
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener('scroll', throttleScroll(handleScroll, 150));
+    });
+    onUnmounted(() => {
+      window.removeEventListener('scroll', throttleScroll(handleScroll, 150));
+    });
 
 
     return {
@@ -66,7 +97,9 @@ export default {
       handleCardClick,
       handleSearch,
       noResults,
-      pokemonsFiltrados
+      pokemonsFiltrados,
+      loadPokemons,
+      isLoading
     }
 
   }
