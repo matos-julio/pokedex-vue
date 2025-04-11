@@ -1,5 +1,5 @@
 <template>
-  <h1>Pokedex</h1>
+  <h1 class="text-center m-4">Pokedex</h1>
   <PokemonList />
 </template>
 

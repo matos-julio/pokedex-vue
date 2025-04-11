@@ -6,6 +6,9 @@
     <div class="card-info">
       <h2 class="pokemon-name">{{ pokemon.name }}</h2>
       <h5 class="pokemon-id">#{{ pokemon.id }}</h5>
+      <p class="pokemon-especies">Especie: {{ pokemon.speciesData.name }}</p>
+      <p>Evolução inicial: {{ pokemon.evolutionData.chain.species.name }}</p>
+
 
       <!-- tipo / especie -->
       <div class="badges mt-2">
