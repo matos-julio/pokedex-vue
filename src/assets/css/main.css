@@ -3,7 +3,7 @@
 
 /* ESTILOS GLOBAIS DO SITE */
 body{
-  background: #fbf7f5;
+  background: linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)
 }
 ul li {
   list-style: none;

@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-center m-4">Pokedex</h1>
+  <h1 class="text-dark-custom fs-h2 text-center m-4 p-4">Sua Pokédex Completa</h1>
   <PokemonList />
 </template>
 
@@ -15,4 +15,5 @@ export default {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
