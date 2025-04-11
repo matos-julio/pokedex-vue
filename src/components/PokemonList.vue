@@ -5,11 +5,12 @@
       <PokemonSearchBar @search="handleSearch" />
     </div>
 
-    <!-- <PokemonSearchBar @search="handleSearch" /> -->
-
     <!-- Exibe a mensagem de erro caso não haja resultados -->
-    <div v-if="noResults" class="alert alert-warning" role="alert">
-      Nenhum Pokémon encontrado. Tente um nome ou ID válido.
+    <div v-if="noResults" class="alert alert-light d-flex flex-column justify-content-center" role="alert">
+      <span class="text-center">
+        Ops... Nenhum Pokémon encontrado. Tente pesquisar novamente.
+      </span>
+      <img src="../assets/confused-pikachu.png" alt="pikachu confuso" class="img-fluid mx-auto d-block img-error">
     </div>
 
     <!-- Lista de Pokemons -->
@@ -63,11 +64,14 @@ export default {
     const noResults = ref(false);
 
     const pokemonsFiltrados = computed(() => {
-      return filtrarPokemons(pokemons.value, searchInput.value, noResults);
+      return filtrarPokemons(pokemons.value, searchInput.value);
     })
 
     const handleSearch = (input) => {
-      searchInput.value = input
+      searchInput.value = input;
+
+      const resultado = filtrarPokemons(pokemons.value, input);
+      noResults.value = resultado.length === 0;
     };
 
     // scroll infinito
@@ -84,10 +88,10 @@ export default {
     };
 
     onMounted(() => {
-      window.addEventListener('scroll', throttleScroll(handleScroll, 150));
+      window.addEventListener('scroll', throttleScroll(handleScroll, 180));
     });
     onUnmounted(() => {
-      window.removeEventListener('scroll', throttleScroll(handleScroll, 150));
+      window.removeEventListener('scroll', throttleScroll(handleScroll, 180));
     });
 
 
@@ -105,3 +109,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .img-error {
+    max-width: 300px;
+  }
+</style>
