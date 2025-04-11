@@ -49,8 +49,6 @@ export default {
       emit("cardClick", props.pokemon)
     }
 
-  console.log("pokemon recebido:", props.pokemon)
-
     // retorno de setup e objeto
     return { emitCardClick }
   }

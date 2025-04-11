@@ -77,11 +77,6 @@ export default {
     const isLoading = ref(false);
 
     const handleScroll = async () => {
-      console.log("scroll:", {
-    isLoading: isLoading.value,
-    offset: offset.value,
-    total: totalPokemons.value,
-  });
       const scrollBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 400;
 
       if (scrollBottom && !isLoading.value) {
