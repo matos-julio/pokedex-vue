@@ -1,0 +1,50 @@
+:root {
+  /* === CORES BASE === */
+  --color-primary: #f2b807;
+  --color-secondary: #f27f16;
+  --color-tertiary: #f5db13;
+  --color-danger: #d93e30;
+  --color-white: #f6f7f9;
+  --color-dark: #212121;
+
+  /* === CORES DE TIPO (agrupadas por categoria visual) === */
+  /* Grupo Cinza: steel, dark, rock */
+  --type-gray: #a1a1a1;
+
+  /* Grupo Verde: grass, bug */
+  --type-green: #70a83b;
+
+  /* Grupo Azul-claro: ice, water */
+  --type-lightblue: #a2cff0;
+
+  /* Grupo Vermelho: fire, fighting, dragon */
+  --type-red: #f76545;
+
+  /* Grupo Azul-médio: normal, ghost */
+  --type-blue: #76aadb;
+
+  /* Grupo Roxo: poison, psychic, fairy */
+  --type-purple: #a974bc;
+
+  /* Grupo Marrom: ground */
+  --type-brown: #9b897b;
+
+  /* Grupo Amarelo: electric */
+  --type-yellow: #f7c545;
+
+  /* === TIPOGRAFIA === */
+  --font-size-h1: 4.5rem;     /* 72px */
+  --font-size-h2: 4rem;       /* 64px */
+  --font-size-h3: 2.25rem;    /* 36px */
+  --font-size-h4: 1.5rem;     /* 24px */
+  --font-size-h5: 1.125rem;   /* 18px */
+  --font-size-h6: 0.75rem;    /* 12px */
+  --font-size-p: 1rem;        /* 16px */
+
+  /* === MARGENS (padrão baseado no Bootstrap) === */
+  --spacing-xxl: 7.5rem;  /* 120px */
+  --spacing-xl: 6rem;     /* 96px */
+  --spacing-lg: 5rem;     /* 80px */
+  --spacing-md: 4rem;     /* 64px */
+  --spacing-sm: 2rem;     /* 32px */
+}

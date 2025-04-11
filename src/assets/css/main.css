@@ -1,3 +1,6 @@
+@import './variables.css';
+@import './custom-utilities.css';
+
 /* ESTILOS GLOBAIS DO SITE */
 body{
   background: #fbf7f5;

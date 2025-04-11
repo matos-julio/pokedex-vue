@@ -1,0 +1,64 @@
+/* === BACKGROUND COLORS === */
+.bg-primary-custom { background-color: var(--color-primary) !important; }
+.bg-secondary-custom { background-color: var(--color-secondary) !important; }
+.bg-tertiary-custom { background-color: var(--color-tertiary) !important; }
+.bg-danger-custom { background-color: var(--color-danger) !important; }
+.bg-white-custom { background-color: var(--color-white) !important; }
+.bg-dark-custom { background-color: var(--color-dark) !important; }
+
+/* === TEXT COLORS === */
+.text-primary-custom { color: var(--color-primary) !important; }
+.text-secondary-custom { color: var(--color-secondary) !important; }
+.text-tertiary-custom { color: var(--color-tertiary) !important; }
+.text-danger-custom { color: var(--color-danger) !important; }
+.text-white-custom { color: var(--color-white) !important; }
+.text-dark-custom { color: var(--color-dark) !important; }
+
+/* === FONT SIZES === */
+.fs-h1 { font-size: var(--font-size-h1) !important; }
+.fs-h2 { font-size: var(--font-size-h2) !important; }
+.fs-h3 { font-size: var(--font-size-h3) !important; }
+.fs-h4 { font-size: var(--font-size-h4) !important; }
+.fs-h5 { font-size: var(--font-size-h5) !important; }
+.fs-h6 { font-size: var(--font-size-h6) !important; }
+.fs-p { font-size: var(--font-size-p) !important; }
+
+/* === MARGINS === */
+.mt-custom-sm { margin-top: var(--spacing-sm) !important; }
+.mt-custom-md { margin-top: var(--spacing-md) !important; }
+.mt-custom-lg { margin-top: var(--spacing-lg) !important; }
+.mt-custom-xl { margin-top: var(--spacing-xl) !important; }
+.mt-custom-xxl { margin-top: var(--spacing-xxl) !important; }
+
+.mb-custom-sm { margin-bottom: var(--spacing-sm) !important; }
+.mb-custom-md { margin-bottom: var(--spacing-md) !important; }
+.mb-custom-lg { margin-bottom: var(--spacing-lg) !important; }
+.mb-custom-xl { margin-bottom: var(--spacing-xl) !important; }
+.mb-custom-xxl { margin-bottom: var(--spacing-xxl) !important; }
+
+/* === PADDINGS === */
+.pt-custom-md { padding-top: var(--spacing-md) !important; }
+.pb-custom-md { padding-bottom: var(--spacing-md) !important; }
+
+/* === TYPE BACKGROUNDS === */
+.bg-type-gray { background-color: var(--type-gray) !important; }
+.bg-type-green { background-color: var(--type-green) !important; }
+.bg-type-lightblue { background-color: var(--type-lightblue) !important; }
+.bg-type-red { background-color: var(--type-red) !important; }
+.bg-type-blue { background-color: var(--type-blue) !important; }
+.bg-type-purple { background-color: var(--type-purple) !important; }
+.bg-type-brown { background-color: var(--type-brown) !important; }
+.bg-type-yellow { background-color: var(--type-yellow) !important; }
+
+/* === TYPE TEXT COLORS === */
+.text-type-gray { color: var(--type-gray) !important; }
+.text-type-green { color: var(--type-green) !important; }
+.text-type-lightblue { color: var(--type-lightblue) !important; }
+.text-type-red { color: var(--type-red) !important; }
+.text-type-blue { color: var(--type-blue) !important; }
+.text-type-purple { color: var(--type-purple) !important; }
+.text-type-brown { color: var(--type-brown) !important; }
+.text-type-yellow { color: var(--type-yellow) !important; }
+
+/* === BORDERS / RADIUS === */
+.rounded-xl { border-radius: 1.5rem !important; }

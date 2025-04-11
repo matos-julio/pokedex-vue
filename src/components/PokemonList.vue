@@ -17,7 +17,6 @@
     <div class="row">
       <!-- 1 col mobile, 2 col telas medias, 3 col telas maiores -->
       <div class="col-12 col-sm-6 col-lg-4" v-for="pokemon in pokemonsFiltrados" :key="pokemon.id">
-        <!--cria cada pokemon que vier na resposta do card | :pokemon = prop que o card recebe | "pokemon" resultado do loop -->
         <PokemonCard :pokemon="pokemon" @cardClick="handleCardClick(pokemon)" />
       </div>
     </div>
@@ -52,7 +51,7 @@ export default {
     PokemonSearchBar
   },
   setup() {
-    const { pokemons, totalPokemons, loadPokemons } = usePokemons(9) // numero de pokemos que aparecem na tela
+    const { pokemons, totalPokemons, loadPokemons, offset } = usePokemons(24) // numero de pokemos que aparecem na tela
 
     const pokemonSelecionado = ref(null) // verifica o pokemon clicado pra abrir o modal
     const handleCardClick = (pokemon) => {
@@ -78,6 +77,11 @@ export default {
     const isLoading = ref(false);
 
     const handleScroll = async () => {
+      console.log("scroll:", {
+    isLoading: isLoading.value,
+    offset: offset.value,
+    total: totalPokemons.value,
+  });
       const scrollBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 400;
 
       if (scrollBottom && !isLoading.value) {
@@ -105,8 +109,8 @@ export default {
       loadPokemons,
       isLoading
     }
-
   }
+
 }
 </script>
 

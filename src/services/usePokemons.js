@@ -48,5 +48,6 @@ export function usePokemons(limit = 9) {
     pokemons,
     totalPokemons,
     loadPokemons,
+    offset
   };
 }
